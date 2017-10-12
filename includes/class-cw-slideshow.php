@@ -220,7 +220,8 @@ class CW_Slideshow {
 		$begin_class = $index ? 'cw-hide cw-begin-slideshow' : 'cw-begin-slideshow';
 
 		$output .= '<div class="cw-begin-wrap">';
-		$output .= '<button data-open="1" class="button ' . $begin_class . '">Begin Slideshow</button>';
+		$output .= '<button data-open="1" class="button ' . $begin_class . '">';
+		$output .= __('Begin Slideshow', 'cw-slideshow') . '</button>';
 		$output .= '</div>';
 
 		if( $slideshow->slides ) {
@@ -262,10 +263,10 @@ class CW_Slideshow {
 
 				$output .= '<div class="cw-button-wrap">';
 
-				$output .= '<button data-open="' . ($i - 1) . '" class="button cw-slide-nav cw-slide-prev">Previous</button>';
+				$output .= '<button data-open="' . ($i - 1) . '" class="button cw-slide-nav cw-slide-prev">' . __('Previous', 'cw-slideshow') . '</button>';
 
 				if( $slide_count > $i ) {
-					$output .= '<button data-open="' . ($i + 1) . '" class="button cw-slide-nav cw-slide-next">Next</button>';
+					$output .= '<button data-open="' . ($i + 1) . '" class="button cw-slide-nav cw-slide-next">' . __('Next', 'cw-slideshow') . '</button>';
 				}
 
 				$output .= '</div>';
