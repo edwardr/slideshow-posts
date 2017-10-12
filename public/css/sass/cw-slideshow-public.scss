@@ -1,0 +1,37 @@
+.cw-hide {
+	display: none!important;
+}
+
+.cw-slide-description {
+	margin: 2rem 0;
+}
+
+.cw-begin-wrap {
+	text-align: center;
+}
+
+.cw-slide-legend {
+	margin: 1rem 0;
+}
+
+.cw-slide-nav.cw-slide-prev {
+	float: left;
+}
+
+.cw-slide-nav.cw-slide-next {
+	float: right;
+}
+
+.cw-slide-footer {
+	text-align: center;
+}
+
+.cw-slide-overview figure {
+	margin: 0;
+}
+
+.cw-button-wrap:after {
+	content: '';
+	display: table;
+	clear: both;
+}

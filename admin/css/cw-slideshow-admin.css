@@ -1,0 +1,16 @@
+.cw-slideshow-img-preview {
+	margin: 1em 0;
+}
+
+.cw-preview-inner {
+	display: inline-block;
+	position: relative;
+}
+
+.cw-preview-inner span.dashicons-no {
+	position: absolute;
+	right: 0;
+	color: #fff;
+	background: rgba(0,0,0,0.5);
+	cursor: pointer;
+}
