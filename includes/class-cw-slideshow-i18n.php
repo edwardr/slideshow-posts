@@ -9,8 +9,8 @@
  * @link       https://codewrangler.io
  * @since      1.0.0
  *
- * @package    CW_Slideshow
- * @subpackage CW_Slideshow/includes
+ * @package    CW_Slideshow_Posts
+ * @subpackage CW_Slideshow_Posts/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    CW_Slideshow
- * @subpackage CW_Slideshow/includes
+ * @package    CW_Slideshow_Posts
+ * @subpackage CW_Slideshow_Posts/includes
  * @author     codeWrangler, Inc. <edward@codewrangler.io>
  */
-class CW_Slideshow_i18n {
+class CW_Slideshow_Posts_i18n {
 
 
 	/**

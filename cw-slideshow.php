@@ -10,7 +10,7 @@
  *
  * @link              https://codewrangler.io
  * @since             1.0.0
- * @package           CW_Slideshow
+ * @package           CW_Slideshow_Posts
  *
  * @wordpress-plugin
  * Plugin Name:       Slideshow Posts
@@ -30,28 +30,28 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'PLUGIN_NAME_VERSION', '1.0.0' );
+define( 'CW_SLIDESHOW_POSTS_VERSION', '1.0.0' );
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-cw-slideshow-activator.php
  */
-function activate_CW_Slideshow() {
+function activate_CW_Slideshow_Posts() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-cw-slideshow-activator.php';
-	CW_Slideshow_Activator::activate();
+	CW_Slideshow_Posts_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-cw-slideshow-deactivator.php
  */
-function deactivate_CW_Slideshow() {
+function deactivate_CW_Slideshow_Posts() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-cw-slideshow-deactivator.php';
-	CW_Slideshow_Deactivator::deactivate();
+	CW_Slideshow_Posts_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_CW_slideshow' );
-register_deactivation_hook( __FILE__, 'deactivate_CW_slideshow' );
+register_activation_hook( __FILE__, 'activate_CW_Slideshow_Posts' );
+register_deactivation_hook( __FILE__, 'deactivate_CW_Slideshow_Posts' );
 
 /**
  * The core plugin class that is used to define internationalization,
@@ -68,11 +68,11 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-cw-slideshow.php';
  *
  * @since    1.0.0
  */
-function run_CW_Slideshow() {
+function run_CW_Slideshow_Posts() {
 
-	$plugin = new CW_Slideshow();
+	$plugin = new CW_Slideshow_Posts();
 	$plugin->run();
 
 }
 
-run_CW_Slideshow();
+run_CW_Slideshow_Posts();

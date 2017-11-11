@@ -6,11 +6,11 @@
  * @link       https://codewrangler.io
  * @since      1.0.0
  *
- * @package    CW_Slideshow
- * @subpackage CW_Slideshow/public
+ * @package    CW_Slideshow_Posts
+ * @subpackage CW_Slideshow_Posts/public
  */
 
-class CW_Slideshow_Public {
+class CW_Slideshow_Posts_Public {
 
 	private $plugin_name;
 	private $version;
@@ -29,7 +29,7 @@ class CW_Slideshow_Public {
 	 */
 	public function register_post_types() {
 
-		$plugin = new CW_Slideshow();
+		$plugin = new CW_Slideshow_Posts();
 		$options = $plugin->get_options();
 
 		register_post_type(
@@ -74,7 +74,7 @@ class CW_Slideshow_Public {
 		);
 
 		// Flushes permalinks if slug-change transient has been set
-		if (delete_transient('cw_slideshow_flush')) {
+		if (delete_transient('CW_Slideshow_Posts_flush')) {
 			flush_rewrite_rules();
 		}
 
@@ -98,7 +98,7 @@ class CW_Slideshow_Public {
 	 */
 	public function enqueue_scripts() {
 		
-		$plugin = new CW_Slideshow();
+		$plugin = new CW_Slideshow_Posts();
 		$options = $plugin->get_options();
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/cw-slideshow-public.js', array( 'jquery' ), $this->version, true );
@@ -123,7 +123,7 @@ class CW_Slideshow_Public {
 
 		global $post;
 
-		$plugin = new CW_Slideshow();
+		$plugin = new CW_Slideshow_Posts();
 
 		if( $post->post_type == 'cw-slideshow' ) {
 
@@ -147,7 +147,7 @@ class CW_Slideshow_Public {
 
 	public function slideshow_query_mod( $query ) {
 
-		$plugin = new CW_Slideshow();
+		$plugin = new CW_Slideshow_Posts();
 		$options = $plugin->get_options();
 
 		if( $options['show_in_blog'] == true ) {

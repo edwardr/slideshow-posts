@@ -9,8 +9,8 @@
  * @link       https://codewrangler.io
  * @since      1.0.0
  *
- * @package    CW_Slideshow
- * @subpackage CW_Slideshow/includes
+ * @package    CW_Slideshow_Posts
+ * @subpackage CW_Slideshow_Posts/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    CW_Slideshow
- * @subpackage CW_Slideshow/includes
+ * @package    CW_Slideshow_Posts
+ * @subpackage CW_Slideshow_Posts/includes
  * @author     codeWrangler, Inc. <edward@codewrangler.io>
  */
-class CW_Slideshow {
+class CW_Slideshow_Posts {
 
 	protected $loader;
 	protected $plugin_name;
@@ -53,10 +53,10 @@ class CW_Slideshow {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - CW_Slideshow_Loader. Orchestrates the hooks of the plugin.
-	 * - CW_Slideshow_i18n. Defines internationalization functionality.
-	 * - CW_Slideshow_Admin. Defines all hooks for the admin area.
-	 * - CW_Slideshow_Public. Defines all hooks for the public side of the site.
+	 * - CW_Slideshow_Posts_Loader. Orchestrates the hooks of the plugin.
+	 * - CW_Slideshow_Posts_i18n. Defines internationalization functionality.
+	 * - CW_Slideshow_Posts_Admin. Defines all hooks for the admin area.
+	 * - CW_Slideshow_Posts_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -91,14 +91,14 @@ class CW_Slideshow {
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cw-slideshow-post.php';
 
-		$this->loader = new CW_Slideshow_Loader();
+		$this->loader = new CW_Slideshow_Posts_Loader();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the CW_Slideshow_i18n class in order to set the domain and to register the hook
+	 * Uses the CW_Slideshow_Posts_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -106,7 +106,7 @@ class CW_Slideshow {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new CW_Slideshow_i18n();
+		$plugin_i18n = new CW_Slideshow_Posts_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -121,12 +121,12 @@ class CW_Slideshow {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new CW_Slideshow_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new CW_Slideshow_Posts_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'cw_slideshow_meta_boxes' );
-		$this->loader->add_action( 'save_post_cw-slideshow', $plugin_admin, 'cw_slideshow_meta_save' );
+		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'CW_Slideshow_Posts_meta_boxes' );
+		$this->loader->add_action( 'save_post_cw-slideshow', $plugin_admin, 'CW_Slideshow_Posts_meta_save' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'wp_enqueue_editor' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'options_page' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_settings' );
@@ -143,7 +143,7 @@ class CW_Slideshow {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new CW_Slideshow_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new CW_Slideshow_Posts_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'init', $plugin_public, 'register_post_types' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
@@ -177,7 +177,7 @@ class CW_Slideshow {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    CW_Slideshow_Loader    Orchestrates the hooks of the plugin.
+	 * @return    CW_Slideshow_Posts_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;
@@ -289,7 +289,7 @@ class CW_Slideshow {
 	 */
 
 	public function get_options() {
-		$options = get_option('cw_slideshow');
+		$options = get_option('CW_Slideshow_Posts');
 		$force_reload = isset( $options['force_reload'] ) && !empty( $options['force_reload'] ) ? true : false;
 		$slug = isset( $options['base_slug'] ) && !empty( $options['base_slug'] ) ? $options['base_slug'] : 'cw-slideshow';
 		$show_in_blog = isset( $options['show_in_blog'] ) && !empty( $options['show_in_blog'] ) ? true : false;

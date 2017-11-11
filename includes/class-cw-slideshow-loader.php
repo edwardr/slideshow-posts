@@ -6,8 +6,8 @@
  * @link       https://codewrangler.io
  * @since      1.0.0
  *
- * @package    CW_Slideshow
- * @subpackage CW_Slideshow/includes
+ * @package    CW_Slideshow_Posts
+ * @subpackage CW_Slideshow_Posts/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    CW_Slideshow
- * @subpackage CW_Slideshow/includes
+ * @package    CW_Slideshow_Posts
+ * @subpackage CW_Slideshow_Posts/includes
  * @author     codeWrangler, Inc. <edward@codewrangler.io>
  */
-class CW_Slideshow_Loader {
+class CW_Slideshow_Posts_Loader {
 	
 	protected $actions;
 	protected $filters;

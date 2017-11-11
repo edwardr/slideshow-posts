@@ -7,14 +7,14 @@
  * @link       https://codewrangler.io
  * @since      1.0.0
  *
- * @package    CW_Slideshow
- * @subpackage CW_Slideshow/includes
+ * @package    CW_Slideshow_Posts
+ * @subpackage CW_Slideshow_Posts/includes
  */
 
 /**
  * @since      2.0.0
- * @package    CW_Slideshow
- * @subpackage CW_Slideshow/includes
+ * @package    CW_Slideshow_Posts
+ * @subpackage CW_Slideshow_Posts/includes
  * @author     codeWrangler, Inc. <edward@codewrangler.io>
  */
 class CW_Slideshow_Post {

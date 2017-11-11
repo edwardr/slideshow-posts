@@ -6,7 +6,7 @@
  * @link       https://codewrangler.io
  * @since      1.0.0
  *
- * @package    CW_Slideshow
+ * @package    CW_Slideshow_Posts
  */
 
 // If uninstall not called from WordPress, then exit.

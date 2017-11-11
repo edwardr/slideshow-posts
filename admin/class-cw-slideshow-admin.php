@@ -6,18 +6,18 @@
  * @link       https://codewrangler.io
  * @since      1.0.0
  *
- * @package    CW_Slideshow
- * @subpackage CW_Slideshow/admin
+ * @package    CW_Slideshow_Posts
+ * @subpackage CW_Slideshow_Posts/admin
  */
 
 /**
  * The admin-specific functionality of the plugin.
  *
- * @package    CW_Slideshow
- * @subpackage CW_Slideshow/admin
+ * @package    CW_Slideshow_Posts
+ * @subpackage CW_Slideshow_Posts/admin
  * @author     codeWrangler, Inc. <edward@codewrangler.io>
  */
-class CW_Slideshow_Admin {
+class CW_Slideshow_Posts_Admin {
 
 	/**
 	 * The ID of this plugin.
@@ -56,8 +56,8 @@ class CW_Slideshow_Admin {
 	 * @since 1.0.0
 	 */
 
-	public function cw_slideshow_meta_boxes() {
-		add_meta_box( 'cw-slideshow-meta-box', __( 'Slideshow Details', 'cw-slideshow' ), array( $this, 'cw_slideshow_meta_callback' ), 'cw-slideshow', 'normal', 'high' );
+	public function CW_Slideshow_Posts_meta_boxes() {
+		add_meta_box( 'cw-slideshow-meta-box', __( 'Slideshow Details', 'cw-slideshow' ), array( $this, 'CW_Slideshow_Posts_meta_callback' ), 'cw-slideshow', 'normal', 'high' );
 	}
 
 	/**
@@ -65,11 +65,11 @@ class CW_Slideshow_Admin {
 	 * @since 1.0.0
 	 */
 
-	public function cw_slideshow_meta_callback( $post ) {
+	public function CW_Slideshow_Posts_meta_callback( $post ) {
 
-		wp_nonce_field( 'cw_slideshow_meta', 'cw_slideshow_meta_nonce' );
+		wp_nonce_field( 'CW_Slideshow_Posts_meta', 'CW_Slideshow_Posts_meta_nonce' );
 
-		$a = new CW_Slideshow( $post->ID );
+		$a = new CW_Slideshow_Posts( $post->ID );
 
 		$slides = get_post_meta( $post->ID, 'cw_slides', true );
 
@@ -113,12 +113,12 @@ class CW_Slideshow_Admin {
 	 * @since 1.0.0
 	 */
 
-	public function cw_slideshow_meta_save( $post_id ) {
-		if ( ! isset( $_POST['cw_slideshow_meta_nonce'] ) ) {
+	public function CW_Slideshow_Posts_meta_save( $post_id ) {
+		if ( ! isset( $_POST['CW_Slideshow_Posts_meta_nonce'] ) ) {
 			return;
 		}
 
-		if ( ! wp_verify_nonce( $_POST['cw_slideshow_meta_nonce'], 'cw_slideshow_meta' ) ) {
+		if ( ! wp_verify_nonce( $_POST['CW_Slideshow_Posts_meta_nonce'], 'CW_Slideshow_Posts_meta' ) ) {
 			return;
 		}
 
@@ -192,7 +192,7 @@ class CW_Slideshow_Admin {
 	 */
 
 	public function register_settings() {
-		register_setting( 'cw_slideshow_options', 'cw_slideshow', array( $this, 'validate_options' ) );
+		register_setting( 'CW_Slideshow_Posts_options', 'CW_Slideshow_Posts', array( $this, 'validate_options' ) );
 	}
 
 	/**
@@ -213,7 +213,7 @@ class CW_Slideshow_Admin {
 
 	public function output_options() {
 
-		$plugin = new CW_Slideshow();
+		$plugin = new CW_Slideshow_Posts();
 		$options = $plugin->get_options();
 
 			echo '<h4>';
@@ -224,20 +224,20 @@ class CW_Slideshow_Admin {
 			<div class="wrap">
 				<h2><?php _e ('Slideshow Posts Options Panel', 'cw-slideshow'); ?></h2>
 				<form method="post" action="options.php">
-					<?php settings_fields('cw_slideshow_options'); ?>
+					<?php settings_fields('CW_Slideshow_Posts_options'); ?>
 					<table class="form-table">
 						<tr valign="top"><th scope="row"><?php _e('Force Page Reload on Slide Navigation', 'cw-slideshow'); ?></th>
-						<td><input name="cw_slideshow[force_reload]" type="checkbox" value="1" <?php checked(1, $options['force_reload'] ); ?> />
+						<td><input name="CW_Slideshow_Posts[force_reload]" type="checkbox" value="1" <?php checked(1, $options['force_reload'] ); ?> />
 						</td>
 						</tr>
 						<tr valign="top"><th scope="row"><?php _e('Slideshow URL Base', 'cw-slideshow'); ?></th>
-						<td><input name="cw_slideshow[base_slug]" type="text" value="<?php echo $options['base_slug']; ?>" />
+						<td><input name="CW_Slideshow_Posts[base_slug]" type="text" value="<?php echo $options['base_slug']; ?>" />
 							<p class="description"><?php _e('If this slug is in use elsewhere, there could be a conflict.', 'cw-slideshow'); ?></p>
 						</td>
 						</tr>
 						<tr valign="top"><th scope="row"><?php _e('Show Slideshows in Blog Feed?', 'cw-slideshow'); ?></th>
 						<td>
-							<input name="cw_slideshow[show_in_blog]" type="checkbox" value="1" <?php checked(1, $options['show_in_blog'] ); ?> />
+							<input name="CW_Slideshow_Posts[show_in_blog]" type="checkbox" value="1" <?php checked(1, $options['show_in_blog'] ); ?> />
 							<p class="description"><?php _e('If enabled, slideshow posts will appear next to blog posts in your main content loop.', 'cw-slideshow'); ?></p>
 						</td>
 						</tr>
@@ -266,7 +266,7 @@ class CW_Slideshow_Admin {
 
 	public function validate_options( $input ) {
 
-		$plugin = new CW_Slideshow();
+		$plugin = new CW_Slideshow_Posts();
 		$options = $plugin->get_options();
 
 		$input['force_reload'] = isset( $input['force_reload'] ) ? true : false;
@@ -282,7 +282,7 @@ class CW_Slideshow_Admin {
 	 */
 
 	public function flush_permalinks($option, $old_value, $value) {
-		set_transient('cw_slideshow_flush', true);
+		set_transient('CW_Slideshow_Posts_flush', true);
 	}
 
 }
