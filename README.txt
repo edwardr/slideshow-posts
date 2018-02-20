@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Lets you create slideshow articles/posts, such as Top 10 lists, etc.
 
 == Description ==
-Slideshow Posts creates a new post type for Slideshows, great for creating Top 10 or other navigable content lists. Options include slide navigation settings and the ability to add the slideshow posts to your main content feeds. Plays nicely and inherits styling with most themes.
+Slideshow Posts creates a new post type for Slideshows, great for creating Top 10 or other navigable content lists. Options include slide navigation settings and the ability to add the slideshow posts to your main congit ent feeds. Plays nicely and inherits styling with most themes.
 
 == Installation ==
 1. Upload the \'cw-slideshow\' folder to the `/wp-content/plugins/` directory

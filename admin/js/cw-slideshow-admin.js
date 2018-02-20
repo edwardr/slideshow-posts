@@ -5,7 +5,6 @@
 			var output, index;
 
 			index = $('.cw-slide-instance').length + 1;
-			console.log(index);
 			output = '<div class="wrap cw-slide-instance">';
 			output += '<p><label><h4>Slide Title</h4>';
 			output += '<input type="text" class="widefat" name="cw_slide_title[]" />';
